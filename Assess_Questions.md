@@ -86,3 +86,21 @@ Through prototypical inheritance, the `myCircle` object inherits the `getArea` m
 In this diagram, we have three objects: `Shape`, `Circle`, and `myCircle`. The `Shape` object serves as the prototype for the `Circle` object, and the `Circle` object serves as the prototype for the `myCircle` object. The `Shape` object has a method called `getArea()`, which is inherited by the `Circle` object. The `Circle` object also has its own method called `getRadius()`, which is inherited by the `myCircle` object. The `myCircle` object has its own property called `radius`.
 
 This diagram illustrates the prototypical inheritance relationship, where objects inherit properties and methods from their prototypes.
+
+<br>
+
+## Why it gives you `false` as a boolean `[]===[]` ?
+
+<br>
+
+In JavaScript, `[]` is an empty array, and `[] === []` compares two separate empty array objects for equality. However, the comparison will return `false` because each array object is a unique instance in memory, even if they have the same contents.
+
+To understand why `[] === []` returns `false`, consider the following:
+
+- An array is an object in JavaScript.
+- When you create a new array with the `[]` syntax, you are creating a new object in memory.
+- If you create two separate empty arrays using `[]`, you will get two unique objects in memory, even if they look identical.
+- The `===` operator checks for strict equality, meaning that it compares the values and types of the two operands.
+- When you compare two objects with `===`, `it checks whether they are the same instance in memory, not whether their contents are the same.`
+
+Therefore, `[] === []` compares two separate empty array objects for equality, and since they are two unique objects in memory, the comparison returns false.
