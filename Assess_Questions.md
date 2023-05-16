@@ -142,3 +142,38 @@ sayHola();                      // Output: Hola, John
 ```
 
 In this example, we have an object `person` with a method `sayHello`. We also have a standalone function `sayHi`. By using `call` and `apply`, we can invoke `sayHi` with the `person` object as the `this` value and pass arguments. With `bind`, we create a new function `sayHola` with the `this` value bound to `person` and the initial argument `'Hola'`.
+
+<br>
+
+## What is Array.prototype.filter() in javascript ?
+
+<br>
+
+In JavaScript, `Array.prototype.filter()` is a built-in method that allows you to create a new array by filtering out elements from an existing array based on a specified condition. It provides a concise way to iterate over an array and selectively include elements that satisfy a given criteria.
+
+The `filter()` method takes a callback function as its argument, which is executed for each element in the array. The callback function should return a Boolean value (`true` or `false`) to indicate whether the element should be included in the resulting filtered array.
+
+The syntax for using `Array.prototype.filter()` is as follows:
+
+```
+const newArray = array.filter(callback(element, index, array));
+```
+
+- <strong><i>array :</i></strong> The original array that you want to filter.
+- <strong><i>callback :</i></strong> A function that defines the filtering condition. It can take three arguments:
+  - <b>element</b>: The current element being processed in the array.
+  - <b>index (optional)</b>: The index of the current element.
+  - <b>array (optional)</b>: The array on which the `filter()` method was called.
+
+The `filter()` method returns a new array containing only the elements from the original array that passed the filtering condition.
+
+Here's an example that demonstrates how to use `Array.prototype.filter()` to filter out even numbers from an array:
+
+```
+const numbers = [1, 2, 3, 4, 5, 6];
+const evenNumbers = numbers.filter(number => number % 2 === 0);
+
+console.log(evenNumbers); // Output: [2, 4, 6]
+```
+
+In this example, the `filter()` method is used to create a new array `evenNumbers` by filtering out the elements that are not even. The callback function `(number => number % 2 === 0)` checks if each number in the array is divisible by 2 (i.e., an even number), and only the even numbers are included in the resulting `evenNumbers` array.
