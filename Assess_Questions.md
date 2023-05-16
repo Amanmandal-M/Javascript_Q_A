@@ -104,3 +104,41 @@ To understand why `[] === []` returns `false`, consider the following:
 - When you compare two objects with `===`, `it checks whether they are the same instance in memory, not whether their contents are the same.`
 
 Therefore, `[] === []` compares two separate empty array objects for equality, and since they are two unique objects in memory, the comparison returns false.
+
+<br>
+
+## What is call , apply and bind in javascript ?
+
+<br>
+
+In JavaScript, call, apply, and bind are methods that can be used to manipulate the this value and invoke functions with a specific context.
+
+- <strong><i>call :</i></strong> The `call` method allows you to invoke a function with a specified `this` value and arguments passed individually. The syntax is: `functionName.call(thisValue, arg1, arg2, ...)`. It sets the `this` value inside the function to the provided `thisValue` and allows you to pass arguments one by one.
+
+- <strong><i>apply :</i></strong> Similar to `call`, the `apply` method allows you to invoke a function with a specified `this` value and arguments passed as an array or array-like object. The syntax is: `functionName.apply(thisValue, [arg1, arg2, ...])`. It sets the this value inside the function to the provided `thisValue` and allows you to pass arguments as an array or array-like object.
+
+- <strong><i>bind :</i></strong> The `bind` method returns a new function with a bound `this` value and, optionally, pre-set arguments. The syntax is: `functionName.bind(thisValue, arg1, arg2, ...)`. It creates a new function where `this` is permanently bound to the provided `thisValue`, and you can also pass initial arguments that are pre-set for the function.
+
+Here's an example to illustrate the usage of these methods :
+
+```
+var person = {
+  name: 'John',
+  sayHello: function() {
+    console.log('Hello, ' + this.name);
+  }
+};
+
+var sayHi = function(greeting) {
+  console.log(greeting + ', ' + this.name);
+};
+
+person.sayHello();              // Output: Hello, John
+sayHi.call(person, 'Hi');       // Output: Hi, John
+sayHi.apply(person, ['Hola']);  // Output: Hola, John
+
+var sayHola = sayHi.bind(person, 'Hola');
+sayHola();                      // Output: Hola, John
+```
+
+In this example, we have an object `person` with a method `sayHello`. We also have a standalone function `sayHi`. By using `call` and `apply`, we can invoke `sayHi` with the `person` object as the `this` value and pass arguments. With `bind`, we create a new function `sayHola` with the `this` value bound to `person` and the initial argument `'Hola'`.
